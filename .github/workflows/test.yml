@@ -6,23 +6,26 @@ jobs:
   build:
     name: Test
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
       with:
         submodules: recursive
+        
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
         java-version: 17
+        
     - uses: nttld/setup-ndk@v1.2.0
       with:
         ndk-version: r25b
+        
     - uses: gradle/gradle-build-action@v2
     - name: Make NDK
       run: ndk-build NDK_DEBUG=0
       working-directory: ./zygisk
+      
     - name: Make Java
       run: bash gradlew assembleRelease
       working-directory: ./
-    - name: Test
-    - run: ls
