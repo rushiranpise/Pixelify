@@ -21,11 +21,8 @@ jobs:
       with:
         ndk-version: r25b
         
-    - uses: gradle/gradle-build-action@v2
-    - name: Make NDK
-      run: ndk-build NDK_DEBUG=0
-      working-directory: ./zygisk
+
       
     - name: Make Java
-      run: bash gradlew assembleRelease
+      run: gradlew  :zygisk:assembleRelease
       working-directory: ./
