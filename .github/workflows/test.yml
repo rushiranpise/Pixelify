@@ -1,9 +1,10 @@
-name: Test
-
-on: 
+name: test
+on:
   push:
+
 jobs:
-  make_module:
+  build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
